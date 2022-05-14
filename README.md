@@ -6,7 +6,7 @@ Some utils for NuxBot.
 
 Scripts use globally installed Pywikibot (PWB). You must install and configure it. 
 
-  - Install Python (Tested with Python 3.10).
+  - Install Python (tested with Python 3.10).
   - Install PWB.
   
 See: [Pywikibot installation](https://doc.wikimedia.org/pywikibot/stable/installation.html).
