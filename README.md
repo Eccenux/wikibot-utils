@@ -11,7 +11,7 @@ Scripts use globally installed Pywikibot (PWB). You must install and configure i
   
 See: [Pywikibot installation](https://doc.wikimedia.org/pywikibot/stable/installation.html).
 
-# Adding module
+## Adding module
 
 Adding module as `utils` to your repo:
 ```
