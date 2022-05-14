@@ -2,7 +2,7 @@ import os, re
 # pip install Unidecode
 from unidecode import unidecode
 
-def save_page_content(page, base_path):
+def save_page_content(page, base_path, suffix = ""):
 	"""
 	Save page contents to a file.
 	
@@ -16,7 +16,7 @@ def save_page_content(page, base_path):
 	titleTrans = re.sub(r'[^a-zA-Z0-9.]', r'_', titleTrans)
 	# must be limited due to limited size of paths on Windows (260 characters by default)
 	titleLimit = 120
-	file = "page_" + titleTrans[:titleLimit] + ".id=" + str(page.pageid) + ".txt"
+	file = "page_" + titleTrans[:titleLimit] + ".id=" + str(page.pageid) + suffix + ".txt"
 	#print("\t", file)
 	path = os.path.join(base_path, file)
 	with open(path, "w+", encoding='utf-8') as text_file:
