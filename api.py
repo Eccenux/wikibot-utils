@@ -33,7 +33,9 @@ def list_template_embedded(site_obj, tpl_name, namespaces=None, content=False):
 	
 	@param site_obj pywikibot.Site()
 	@param tpl_name Template name without namespace.
-	@param namespaces Optional array of namespace numbers.
+	@param namespaces (optional) array of namespace numbers (defaults to any namespace).
+	@param content (optional) if True, retrieve the content of the current version
+            of each embedding page (default False)
 
 	@returns Generator that can be used to iterate over pages.
 		The generator will load 50 pages at a time for iteration.
