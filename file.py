@@ -43,4 +43,7 @@ def save_list(list_data, base_path, list_name, append = True):
 	if append:
 		access_mode = "a+"
 	with open(path, access_mode, encoding='utf-8') as text_file:
+		size = text_file.tell()
+		if size > 0:
+			text_file.write(",\n")
 		text_file.write(str(list_data))
