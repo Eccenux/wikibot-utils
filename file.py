@@ -1,4 +1,5 @@
 import os, re
+import json
 # pip install Unidecode
 from unidecode import unidecode
 
@@ -47,7 +48,8 @@ def save_list_data(list_data:list, output_path, list_name, append = True):
 		size = text_file.tell()
 		if size > 0:
 			text_file.write(",\n")
-		text_file.write(str(list_data))
+		#text_file.write(str(list_data))
+		text_file.write(json.dumps(list_data, separators=(',\n', ':')))
 
 def save_list_var(output_path, list_name, var_name = 'pages'):
 	"""
