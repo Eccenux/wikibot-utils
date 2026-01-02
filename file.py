@@ -1,5 +1,8 @@
 import os, re
 import json
+import sys
+import logging
+
 # pip install Unidecode
 from unidecode import unidecode
 
@@ -68,3 +71,26 @@ def save_list_var(output_path, list_name, var_name = 'pages'):
 		text_file.write(text)
 		text_file.write("\n]\n")
 
+def logging_setup(log_path, file_level = logging.INFO, console_level = logging.WARNING):
+	"""
+	Setup global logging with separate levels for file and console.
+	"""
+	os.makedirs(os.path.dirname(log_path), exist_ok=True)
+	root_logger = logging.getLogger()
+	root_logger.setLevel(logging.DEBUG)  # handle any (filtered in handlers below)
+
+	# remove previous handlers just in case
+	for h in root_logger.handlers[:]:
+		root_logger.removeHandler(h)
+
+	# --- handler pliku ---
+	file_handler = logging.FileHandler(log_path, encoding='utf-8')
+	file_handler.setLevel(file_level)
+	file_handler.setFormatter(logging.Formatter('%(asctime)s [%(levelname)s] %(message)s'))
+	root_logger.addHandler(file_handler)
+
+	# --- handler konsoli ---
+	console_handler = logging.StreamHandler(sys.stdout)
+	console_handler.setLevel(console_level)
+	console_handler.setFormatter(logging.Formatter('[%(levelname)s] %(message)s'))
+	root_logger.addHandler(console_handler)
